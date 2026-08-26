@@ -1,0 +1,207 @@
+/* Neo9Brutalism override for Ardra website
+   Drop this file into css/ and replace existing stylesheet link in index.html.
+*/
+
+/* 1) Palette & tokens: strong contrast, flat colors */
+:root{
+  --bg: #ffffff;
+  --text: #000000;
+  --muted: #222222;
+  --accent: #ff2d55; /* bright accent */
+  --accent-2: #00a3ff;
+  --card-bg: #ffffff;
+  --border: #000000;
+  --shadow-soft: none;
+  --font-heading: system-ui, "Helvetica Neue", Arial, sans-serif;
+  --font-body: system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  --radius-none: 0px;
+  --thick-border: 3px;
+  --thin-border: 1px;
+}
+
+/* 2) Base */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html,body { background: var(--bg); color: var(--text); font-family: var(--font-body); }
+body { -webkit-font-smoothing: auto; -moz-osx-font-smoothing: auto; }
+
+/* Override existing gradients, big rounded radii and soft shadows */
+.splash,
+.hero,
+.quick-intro__card,
+.interest-card,
+.subject-card,
+.about__stat,
+.value-card,
+.motivation__card,
+.social__card,
+.footer__content,
+.timeline__content {
+  background: var(--card-bg) !important;
+  border-radius: var(--radius-none) !important;
+  box-shadow: var(--shadow-soft) !important;
+  border: var(--thick-border) solid var(--border) !important;
+}
+
+/* 3) Splash: make it stark and typographic */
+.splash {
+  background: var(--bg) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.splash__name {
+  color: var(--text) !important;
+  font-family: var(--font-heading) !important;
+  font-size: 48px !important;
+  font-weight: 900 !important;
+  letter-spacing: 6px !important;
+  margin-bottom: 6px !important;
+}
+.splash__subtitle {
+  color: var(--muted) !important;
+  font-size: 12px !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase;
+}
+.splash__loader, .splash__loader-bar {
+  display: none !important;
+}
+
+/* 4) Hero: flat background, strong headline */
+.hero {
+  background: var(--bg) !important;
+  padding-top: calc(40px + env(safe-area-inset-top, 0px)) !important;
+  min-height: 80vh !important;
+}
+.hero__container { max-width: 760px; text-align: left; margin: 0 auto; }
+.hero__greeting { color: var(--muted) !important; font-weight: 700; }
+.hero__title {
+  font-family: var(--font-heading) !important;
+  font-size: 46px !important;
+  letter-spacing: -1px;
+  color: var(--text) !important;
+  line-height: 1.02;
+  margin-bottom: 8px;
+}
+.hero__title-accent {
+  color: var(--accent) !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+}
+
+/* 5) Buttons: rectangular, heavy border, inverted hover */
+.btn {
+  border-radius: 0 !important;
+  border: var(--thick-border) solid var(--border) !important;
+  padding: 12px 18px !important;
+  background: #ffffff !important;
+  color: var(--text) !important;
+  box-shadow: none !important;
+  font-weight: 800 !important;
+}
+.btn--primary {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--accent) !important;
+}
+.btn--primary:hover {
+  background: #fff !important;
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.btn--secondary {
+  background: #fff !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+.btn:focus { outline: 4px solid var(--accent-2); outline-offset: 3px; }
+
+/* 6) Cards & lists: grid/flex same but remove soft aesthetics */
+.quick-intro__card,
+.interest-card,
+.subject-card,
+.about__stat,
+.value-card,
+.motivation__card,
+.social__card {
+  padding: 20px !important;
+  background: #fff !important;
+  border: var(--thick-border) solid var(--border) !important;
+  border-radius: 0 !important;
+  color: var(--text) !important;
+}
+.section__label {
+  background: none !important;
+  color: var(--text) !important;
+  padding: 2px 6px !important;
+  border: var(--thin-border) solid var(--border) !important;
+  border-radius: 0 !important;
+  display: inline-block;
+  font-weight: 900 !important;
+}
+
+/* 7) Typography: bold, no gradients, bigger headings site-wide */
+.section__title {
+  font-family: var(--font-heading) !important;
+  font-size: 28px !important;
+  font-weight: 900 !important;
+  color: var(--text) !important;
+}
+.hero__text,
+.about__text,
+.learning__intro,
+.subject-card__text,
+.interest-card__text {
+  color: var(--muted) !important;
+  font-weight: 600;
+}
+
+/* 8) Timeline: make line bold and blocks boxed */
+.timeline::before {
+  width: 6px !important;
+  background: var(--border) !important;
+}
+.timeline__dot {
+  border: 3px solid var(--border) !important;
+  background: #fff !important;
+}
+.timeline__content {
+  border: var(--thick-border) solid var(--border) !important;
+  padding: 14px !important;
+}
+
+/* 9) Footer / bottom nav styles */
+.footer__content {
+  border-top: var(--thick-border) solid var(--border) !important;
+  padding: 18px !important;
+  display: block !important;
+  text-align: left !important;
+}
+.bottom-nav, .dot-menu, .dot-menu__nav {
+  border-top: var(--thin-border) solid var(--border) !important;
+  background: #fff !important;
+}
+.bottom-nav__item {
+  border-left: var(--thin-border) solid var(--border);
+  padding: 10px 12px;
+}
+
+/* 10) Small screen tweaks — keep layout intact but brutalist */
+@media (max-width: 640px){
+  .hero__title { font-size: 28px !important; }
+  .section { padding-left: 12px !important; padding-right: 12px !important; }
+  .quick-intro__card, .interest-card, .subject-card { padding: 12px !important; }
+}
+
+/* 11) Accessibility: make focus outlines visible */
+a:focus, button:focus { outline: 4px solid var(--accent-2); outline-offset: 3px; }
+
+/* 12) Minimal overrides to remove decorative floating shapes if still present */
+.hero__decor,
+.motivation__bg-shape,
+.hero__avatar-ring,
+.hero__avatar-status { display: none !important; }
